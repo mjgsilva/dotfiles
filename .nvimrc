@@ -35,8 +35,8 @@ filetype plugin on
 " Keymaps
 let mapleader="\<Space>"
 
-imap <C-k> <esc>
-nmap <C-k> <Insert>
+imap <c-j> <esc>
+nmap <C-j> <Insert>
 vmap <C-k> <esc>
 nmap <c-p> :CtrlP
 nmap <C-n> :NERDTreeToggle<CR>
