@@ -26,6 +26,7 @@ call vundle#begin()
   Plugin 'ervandew/supertab'
   Plugin 'mxw/vim-jsx'
   Plugin 'isRuslan/vim-es6'
+  Plugin 'jiangmiao/auto-pairs'
 
   " Colorschemes
   Plugin 'mhartington/oceanic-next'
@@ -105,6 +106,10 @@ let g:airline_theme='oceanicnext'
 let NERDTreeShowHidden=1
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
+
+" Close Completion Preview Window
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabLongestHighlight = 1
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
