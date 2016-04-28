@@ -45,6 +45,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ag<Space>
+nnoremap <Leader>t :tabe<CR>
 
 imap <down> <nop>
 imap <up> <nop>
