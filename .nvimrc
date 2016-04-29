@@ -46,6 +46,8 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>t :tabe<CR>
+" disable search highlight and clean command from command area
+nnoremap <Leader>h :noh<CR><CR>:<backspace>
 
 imap <down> <nop>
 imap <up> <nop>
