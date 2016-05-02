@@ -46,9 +46,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>t :tabe<CR>
-" disable search highlight and clean command from command area
-nnoremap <Leader>h :noh<CR><CR>:<backspace>
-
+nnoremap <Leader>h :nohlsearch<CR>
 imap <down> <nop>
 imap <up> <nop>
 imap <right> <nop>
@@ -81,7 +79,9 @@ set lazyredraw " redraw only when necessary
 set showmatch " show matching parenthesis [ { ( ) } ]
 
 " Searching
-set incsearch
+set incsearch " incremental search
+set ignorecase " case insensitive
+set hlsearch " highlight search results
 
 " Backups
 set nobackup       " do not backup
