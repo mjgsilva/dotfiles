@@ -1,5 +1,3 @@
-# ~/.tmuxinator/dharma.yml
-
 name: dharma
 root: ~/Documents/workspace/dharma5academy
 
@@ -30,11 +28,11 @@ windows:
   - project:
       layout: even-horizontal
       panes:
-        - cd .; npm run webpack-dev
+        - npm run webpack-dev
         - cd .; bin/rails s -b 0.0.0.0
   - terminal:
       panes:
         - cd .;
   - vim:
       panes:
-        - cd .; v
+        - v
