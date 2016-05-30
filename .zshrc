@@ -91,6 +91,8 @@ function ignoreio() { curl -L -s https://www.gitignore.io/api/$@ ;}
 source /Users/mario/.dvm/dvm.sh
 export EDITOR='nvim'
 
+# Tmuxinator
+function tmux() { tmuxinator "$@" }
 # Docker
 alias 'dstart=eval "$(docker-machine env default)"'
 alias 'dstop=docker rm "$(docker ps -a -q)"'
@@ -106,7 +108,7 @@ alias npmi='npm set progress=false && npm install'
 # Postgres
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-# Git alias 
+# Git alias
 alias gs='git status'
 alias gap='git add -p'
 alias gaa='git add -A'
