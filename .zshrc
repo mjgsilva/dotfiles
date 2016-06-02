@@ -92,7 +92,7 @@ source /Users/mario/.dvm/dvm.sh
 export EDITOR='nvim'
 
 # Tmuxinator
-function tmux() { tmuxinator "$@" }
+function mux() { tmuxinator "$@" }
 # Docker
 alias 'dstart=eval "$(docker-machine env default)"'
 alias 'dstop=docker rm "$(docker ps -a -q)"'
