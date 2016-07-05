@@ -124,5 +124,6 @@ alias gcm='git checkout master'
 function gcmm() { git commit -m "$@" }
 function gcb() { git checkout -b "$@" }
 function gc() { git checkout "$@" }
+function gbd() { git branch -D "$@" }
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
