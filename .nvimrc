@@ -27,6 +27,7 @@ call vundle#begin()
   Plugin 'mxw/vim-jsx'
   Plugin 'isRuslan/vim-es6'
   Plugin 'jiangmiao/auto-pairs'
+  Plugin 'tpope/vim-eunuch'
 
   " Colorschemes
   Plugin 'mhartington/oceanic-next'
@@ -100,8 +101,8 @@ syntax enable
 syntax on
 
 " Theme
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme OceanicNext
+set termguicolors
 set background=dark
 let g:airline_theme='oceanicnext'
 

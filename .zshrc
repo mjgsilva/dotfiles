@@ -102,7 +102,7 @@ alias 'dkill=docker kill "$(docker ps -q)"'
 alias 'drd=docker rmi "$(docker images -q -f dangling=true)"'
 alias 'dra=docker rmi "$(docker images -q)"'
 # NeoVim alias
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias v='env LANG=en_GB.UTF-8 nvim'
 # Npm installer w/o progress bar
 alias npmi='npm set progress=false && npm install'
 # Postgres
@@ -113,7 +113,8 @@ alias gs='git status'
 alias gap='git add -p'
 alias gaa='git add -A'
 alias gp='git push'
-alias gpf='git push -f'
+alias gpf='git push --force-with-lease'
+alias gpff='git push -f'
 alias gpp='git pull'
 alias gst='git stash -u'
 alias gsa='git stash apply'
@@ -125,5 +126,8 @@ function gcmm() { git commit -m "$@" }
 function gcb() { git checkout -b "$@" }
 function gc() { git checkout "$@" }
 function gbd() { git branch -D "$@" }
+#function rake() { bundle exec rake "$@" }
+function dorig() { find . -name '*.orig' -delete }
 
+export GPG_TTY=$(tty)
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
