@@ -1,5 +1,5 @@
-name: dharma
-root: ~/Documents/workspace/dharma5academy
+name: experimental
+root: ~/Documents/workspace/experimental/<project_name>
 
 # Optional tmux socket
 # socket_name: foo
@@ -26,13 +26,15 @@ root: ~/Documents/workspace/dharma5academy
 
 windows:
   - project:
-      layout: even-horizontal
       panes:
-        - npm run webpack-dev
-        - cd .; bin/rails s -b 0.0.0.0
+        - cd .; env PORT=4000 bin/rails s -b 0.0.0.0
+        - cd .; npm run webpack-dev
   - terminal:
       panes:
         - cd .;
   - vim:
       panes:
         - v
+  - railsc:
+      panes:
+        - cd .; rails c

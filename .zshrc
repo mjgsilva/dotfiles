@@ -50,6 +50,7 @@ ZSH_THEME="smtMJ"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
+plugins=(ssh-agent)
 
 # User configuration
 
@@ -122,10 +123,13 @@ alias grm='git rebase master -i'
 alias grc='git rebase --continue'
 alias gca='git commit --amend'
 alias gcm='git checkout master'
+function gsut() { git branch --set-upstream-to=origin/"$@" "$@" }
 function gcmm() { git commit -m "$@" }
 function gcb() { git checkout -b "$@" }
 function gc() { git checkout "$@" }
+compdef _git gc=git-checkout
 function gbd() { git branch -D "$@" }
+compdef _git gbd=git-branch
 #function rake() { bundle exec rake "$@" }
 function dorig() { find . -name '*.orig' -delete }
 
