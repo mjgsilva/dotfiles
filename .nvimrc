@@ -99,6 +99,7 @@ set completeopt=longest
 " Others
 syntax enable
 syntax on
+set clipboard=unnamed
 
 " Theme
 colorscheme OceanicNext
