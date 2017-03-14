@@ -89,7 +89,6 @@ export NVM_DIR="/Users/mario/.nvm"
 function ignoreio() { curl -L -s https://www.gitignore.io/api/$@ ;}
 #if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-source /Users/mario/.dvm/dvm.sh
 export EDITOR='nvim'
 
 # Tmuxinator

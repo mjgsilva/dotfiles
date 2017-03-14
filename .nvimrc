@@ -7,7 +7,7 @@ filetype off                  " required
 "
 "
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
   " let Vundle manage Vundle, required
   Plugin 'VundleVim/Vundle.vim'
@@ -24,9 +24,9 @@ call vundle#begin()
   Plugin 'tpope/vim-endwise'
   Plugin 'tpope/vim-surround'
   Plugin 'ervandew/supertab'
-  Plugin 'mxw/vim-jsx'
-  Plugin 'isRuslan/vim-es6'
+  "Plugin 'mxw/vim-jsx'
   Plugin 'jiangmiao/auto-pairs'
+  Plugin 'othree/yajs.vim'
   Plugin 'tpope/vim-eunuch'
 
   " Colorschemes
@@ -103,8 +103,10 @@ set clipboard=unnamed
 
 " Theme
 colorscheme OceanicNext
-set termguicolors
-set background=dark
+if (has("termguicolors"))
+  set termguicolors
+endif
+"set background=dark
 let g:airline_theme='oceanicnext'
 
 " Nerdtree - show hidden files
@@ -115,6 +117,9 @@ set laststatus=2
 " Close Completion Preview Window
 let g:SuperTabClosePreviewOnPopupClose = 1
 let g:SuperTabLongestHighlight = 1
+
+" Disable JS - Vim Polyglot Plugin
+let g:polyglot_disabled = ['javascript']
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
