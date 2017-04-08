@@ -94,13 +94,10 @@ export EDITOR='nvim'
 # Tmuxinator
 function mux() { tmuxinator "$@" }
 # Docker
-alias 'dstart=eval "$(docker-machine env default)"'
-alias 'dstop=docker rm "$(docker ps -a -q)"'
-alias 'dps=docker ps -a'
-alias 'dld=docker images -q -f dangling=true'
-alias 'dkill=docker kill "$(docker ps -q)"'
-alias 'drd=docker rmi "$(docker images -q -f dangling=true)"'
-alias 'dra=docker rmi "$(docker images -q)"'
+alias '_dcu=docker-compose up'
+alias '_dcd=docker-compose down'
+alias '_dss=docker-sync-stack start'
+alias '_dsc=docker-sync clean'
 # NeoVim alias
 alias v='env LANG=en_GB.UTF-8 nvim'
 # Npm installer w/o progress bar
