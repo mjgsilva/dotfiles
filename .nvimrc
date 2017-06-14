@@ -101,6 +101,9 @@ syntax enable
 syntax on
 set clipboard=unnamed
 
+" Mouse
+set mouse=a
+
 " Theme
 colorscheme OceanicNext
 if (has("termguicolors"))
