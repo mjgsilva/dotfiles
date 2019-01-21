@@ -42,12 +42,14 @@ nmap <C-j> <Insert>
 vmap <C-k> <esc>
 nmap <c-p> :CtrlP
 nmap <C-n> :NERDTreeToggle<CR>
+nmap <Leader>n :NERDTreeFind<CR> " Reveal current file in NerdTree
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>a :Ag<Space>
+nnoremap <Leader>a :Ag!<Space>
 nnoremap <Leader>t :tabe<CR>
 nnoremap <Leader>h :nohlsearch<CR>
+nnoremap F :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 imap <down> <nop>
 imap <up> <nop>
 imap <right> <nop>
@@ -135,4 +137,5 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 'a'
 endif
