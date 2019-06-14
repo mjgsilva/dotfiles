@@ -60,6 +60,9 @@ nmap <right> <nop>
 nmap <left> <nop>
 
 " Options
+
+set updatetime=100 "set updatetime to shorter value
+
 " Text
 set tabstop=2 " spaces per tab
 set softtabstop=2 " spaces in tab when editing
