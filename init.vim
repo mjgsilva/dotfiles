@@ -11,7 +11,7 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
   " let Vundle manage Vundle, required
   Plugin 'VundleVim/Vundle.vim'
-  Plugin 'kien/ctrlp.vim'
+  "Plugin 'kien/ctrlp.vim'
   Plugin 'rking/ag.vim'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'scrooloose/syntastic'
@@ -24,10 +24,23 @@ call vundle#begin()
   Plugin 'tpope/vim-endwise'
   Plugin 'tpope/vim-surround'
   Plugin 'ervandew/supertab'
-  "Plugin 'mxw/vim-jsx'
   Plugin 'jiangmiao/auto-pairs'
   Plugin 'othree/yajs.vim'
   Plugin 'tpope/vim-eunuch'
+  Plugin 'gcmt/wildfire.vim'
+  Plugin 'janko/vim-test'
+  Plugin 'kassio/neoterm'
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'Xuyuanp/nerdtree-git-plugin'
+  Plugin 'terryma/vim-multiple-cursors'
+  Plugin 'tpope/vim-projectionist'
+  Plugin 'tpope/vim-fugitive'
+
+  Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plugin 'junegunn/fzf.vim'
+
+" load lua functions for navigation
+lua require("navigation")
 
   " Colorschemes
   Plugin 'mhartington/oceanic-next'
@@ -40,9 +53,10 @@ let mapleader="\<Space>"
 imap <c-j> <esc>
 nmap <C-j> <Insert>
 vmap <C-k> <esc>
-nmap <c-p> :CtrlP
+nmap <c-p> :FZF<CR>
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <Leader>n :NERDTreeFind<CR> " Reveal current file in NerdTree
+nnoremap <Leader>nr :NERDTreeRefreshRoot<CR> "Refresh root
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
@@ -50,6 +64,54 @@ nnoremap <Leader>a :Ag!<Space>
 nnoremap <Leader>t :tabe<CR>
 nnoremap <Leader>h :nohlsearch<CR>
 nnoremap F :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" vim-test
+let test#strategy = "neoterm"
+nnoremap <Leader>nn :TestNearest<CR>
+nnoremap <Leader>ff :TestFile<CR>
+nnoremap <Leader>ss :TestSuite<CR>
+nnoremap <Leader>ll :TestLast<CR>
+
+" neoterm settings
+let g:neoterm_default_mod = 'vertical'
+let g:neoterm_automap_keys = 'tt'
+let g:neoterm_fixedsize = 1
+let g:neoterm_autoscroll = 1
+
+tnoremap <C-e> <C-\><C-n>
+" toggle terminal split
+nnoremap <silent> <leader>th :Ttoggle<cr>
+" clear terminal
+nnoremap <silent> <leader>tl :Tclear<cr>
+" kill job running in terminal
+nnoremap <silent> <leader>tk :Tkill<cr>
+
+" nerdcommenter
+let g:NERDCreateDefaultMappings = 0
+map <Leader>cc <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+
+" projections
+nnoremap <silent> <leader>ap :A<cr>
+nnoremap <silent> <leader>av :Av<cr>
+let g:projectionist_heuristics = {
+      \ "package.json": {
+      \   'src/*.js': {'alternate': '{}.test.js', 'type': 'source'},
+      \   'src/*.test.js': {'alternate': 'src/{}.js', 'type': 'test'}
+      \ },
+      \ "mix.exs": {
+      \   'lib/*.ex': {'alternate': 'test/{}_test.exs', 'type': 'source'},
+      \   'test/*_test.exs': {'alternate': 'lib/{}.ex', 'type': 'test'}
+      \ }}
+
+" FZF
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+"Open FZF and choose floating window
+let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
+"Let the input go up and the search list go down
+let $FZF_DEFAULT_OPTS = '--layout=reverse'
+imap <c-x><c-f> <plug>(fzf-complete-path)
+
 imap <down> <nop>
 imap <up> <nop>
 imap <right> <nop>
@@ -73,7 +135,7 @@ set shiftwidth=2
 set autoindent
 set copyindent " copy indentation
 set smartindent " fix indent on new lines
-set splitbelow " open horizontal splits below
+" set splitbelow " open horizontal splits below
 set splitright " open vertical splits on the right
 
 " UI
@@ -119,6 +181,21 @@ let g:airline_theme='oceanicnext'
 
 " Nerdtree - show hidden files
 let NERDTreeShowHidden=1
+
+" Multi cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_word_key      = '<C-a><C-n>'
+let g:multi_cursor_next_key            = '<C-a><C-n>'
+let g:multi_cursor_select_all_word_key = '<C-a><C-l>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+" Fugitive
+" show current file's history in tig, on a new tmux window
+nmap <silent> <leader>gh :silent execute "!tmux new-window tig " . expand("%:p")<CR>
+
+" show commits for every source line
+nnoremap <Leader>gb :Gblame<CR>
+
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
@@ -142,3 +219,6 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 'a'
 endif
+
+" resize splits when vim is resized
+autocmd VimResized * wincmd =

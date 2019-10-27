@@ -128,6 +128,13 @@ function gbd() { git branch -D "$@" }
 compdef _git gbd=git-branch
 #function rake() { bundle exec rake "$@" }
 function dorig() { find . -name '*.orig' -delete }
+function pdfcompress() { gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$@" "$@" }
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" -g ""'
+
+alias to='ls -t ~/Documents/Github | fzf --layout=reverse | xargs -I{} tmux new-session -s {} -c ~/Documents/Github/{} -d'
+alias ta='tmux attach -t "$(tmux ls -F "#S" | fzf --layout=reverse)"'
+alias ts='tmux ls'
 
 export GPG_TTY=$(tty)
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
