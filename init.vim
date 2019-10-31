@@ -11,8 +11,6 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
   " let Vundle manage Vundle, required
   Plugin 'VundleVim/Vundle.vim'
-  "Plugin 'kien/ctrlp.vim'
-  Plugin 'rking/ag.vim'
   Plugin 'airblade/vim-gitgutter'
   Plugin 'scrooloose/syntastic'
   Plugin 'scrooloose/nerdtree'
@@ -39,14 +37,15 @@ call vundle#begin()
   Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plugin 'junegunn/fzf.vim'
 
-" load lua functions for navigation
-lua require("navigation")
 
   " Colorschemes
   Plugin 'mhartington/oceanic-next'
 call vundle#end()            " required
 filetype plugin on
 
+" load lua functions for navigation
+lua require("navigation")
+"
 " Keymaps
 let mapleader="\<Space>"
 
@@ -60,10 +59,10 @@ nnoremap <Leader>nr :NERDTreeRefreshRoot<CR> "Refresh root
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>a :Ag!<Space>
+nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>t :tabe<CR>
 nnoremap <Leader>h :nohlsearch<CR>
-nnoremap F :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap F :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " vim-test
 let test#strategy = "neoterm"
@@ -78,6 +77,7 @@ let g:neoterm_automap_keys = 'tt'
 let g:neoterm_fixedsize = 1
 let g:neoterm_autoscroll = 1
 
+" close split
 tnoremap <C-e> <C-\><C-n>
 " toggle terminal split
 nnoremap <silent> <leader>th :Ttoggle<cr>
@@ -109,7 +109,8 @@ let g:fzf_buffers_jump = 1
 "Open FZF and choose floating window
 let g:fzf_layout = { 'window': 'lua NavigationFloatingWin()' }
 "Let the input go up and the search list go down
-let $FZF_DEFAULT_OPTS = '--layout=reverse'
+let $FZF_DEFAULT_OPTS = '--layout=reverse --bind ctrl-d:page-down,ctrl-u:page-up'
+
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 imap <down> <nop>
@@ -184,9 +185,9 @@ let NERDTreeShowHidden=1
 
 " Multi cursors
 let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_word_key      = '<C-a><C-n>'
-let g:multi_cursor_next_key            = '<C-a><C-n>'
-let g:multi_cursor_select_all_word_key = '<C-a><C-l>'
+let g:multi_cursor_start_word_key      = '<C-i><C-n>'
+let g:multi_cursor_next_key            = '<C-i><C-n>'
+let g:multi_cursor_select_all_word_key = '<C-i><C-l>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 " Fugitive
@@ -205,20 +206,6 @@ let g:SuperTabLongestHighlight = 1
 
 " Disable JS - Vim Polyglot Plugin
 let g:polyglot_disabled = ['javascript']
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects
-  " .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_working_path_mode = 'a'
-endif
 
 " resize splits when vim is resized
 autocmd VimResized * wincmd =
