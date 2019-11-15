@@ -80,19 +80,19 @@ let g:neoterm_autoscroll = 1
 " close split
 tnoremap <C-e> <C-\><C-n>
 " toggle terminal split
-nnoremap <silent> <leader>th :Ttoggle<cr>
+nnoremap <silent> <leader>m1 :Ttoggle<cr>
 " clear terminal
-nnoremap <silent> <leader>tl :Tclear<cr>
+nnoremap <silent> <leader>m2 :Tclear<cr>
 " kill job running in terminal
-nnoremap <silent> <leader>tk :Tkill<cr>
+nnoremap <silent> <leader>m3 :Tkill<cr>
 
 " nerdcommenter
 let g:NERDCreateDefaultMappings = 0
 map <Leader>cc <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
 
 " projections
-nnoremap <silent> <leader>ap :A<cr>
-nnoremap <silent> <leader>av :Av<cr>
+nnoremap <silent> <leader>u1 :A<cr>
+nnoremap <silent> <leader>u2 :AV<cr>
 let g:projectionist_heuristics = {
       \ "package.json": {
       \   'src/*.js': {'alternate': '{}.test.js', 'type': 'source'},
@@ -182,6 +182,7 @@ let g:airline_theme='oceanicnext'
 
 " Nerdtree - show hidden files
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.DS_Store$']
 
 " Multi cursors
 let g:multi_cursor_use_default_mapping=0
