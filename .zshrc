@@ -126,15 +126,52 @@ function gc() { git checkout "$@" }
 compdef _git gc=git-checkout
 function gbd() { git branch -D "$@" }
 compdef _git gbd=git-branch
-#function rake() { bundle exec rake "$@" }
+
+function nuke() {
+  git fetch
+  git reset --hard origin/"$@"
+}
+compdef _git nuke=git-branch
+
+function rbs() {
+  local my_branch="$(git rev-parse --abbrev-ref HEAD)"
+  git checkout master
+  git pull
+  git checkout ${my_branch}
+  git rebase master -i
+}
+
 function dorig() { find . -name '*.orig' -delete }
-function pdfcompress() { gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$@" "$@" }
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" -g ""'
 
-alias to='ls -t ~/Documents/Github | fzf --layout=reverse | xargs -I{} tmux new-session -s {} -c ~/Documents/Github/{} -d'
+alias to='mux "$(ls -t ~/Documents/Github/UT | fzf --layout=reverse)"'
 alias ta='tmux attach -t "$(tmux ls -F "#S" | fzf --layout=reverse)"'
 alias ts='tmux ls'
+function tat() { tmux attach-session -t "$@" }
+alias hh='echo "$(history | cut -c 8- | sort -rn | fzf --layout=reverse)"'
+function mixx() {
+  if [ "$1" = "" ]; then
+    source ./.env.dev && iex -S mix
+  else
+    source ./.env.dev && PORT="$1" iex -S mix
+  fi
+}
+
+alias ypretty='yarn prettier --write "src/**/*.{js,jsx}"'
 
 export GPG_TTY=$(tty)
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=$HOME/.utrust-cli/bin:$PATH
+
+. /usr/local/opt/asdf/asdf.sh
+
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+eval "$(direnv hook zsh)"
+
+export PATH="$(yarn global bin):$PATH"
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship

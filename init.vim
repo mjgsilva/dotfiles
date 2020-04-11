@@ -62,7 +62,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>t :tabe<CR>
 nnoremap <Leader>h :nohlsearch<CR>
-nnoremap F :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap F :Ag <C-R><C-W><CR>
 
 " vim-test
 let test#strategy = "neoterm"
