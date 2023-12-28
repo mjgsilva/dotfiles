@@ -6,41 +6,48 @@ filetype off                  " required
 " Package Management
 "
 "
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-  " let Vundle manage Vundle, required
-  Plugin 'VundleVim/Vundle.vim'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'scrooloose/syntastic'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'sheerun/vim-polyglot'
-  Plugin 'bling/vim-airline'
-  Plugin 'tpope/vim-rails'
-  Plugin 'tpope/vim-bundler'
-  Plugin 'thoughtbot/vim-rspec'
-  Plugin 'tpope/vim-endwise'
-  Plugin 'tpope/vim-surround'
-  Plugin 'ervandew/supertab'
-  Plugin 'jiangmiao/auto-pairs'
-  Plugin 'othree/yajs.vim'
-  Plugin 'tpope/vim-eunuch'
-  Plugin 'gcmt/wildfire.vim'
-  Plugin 'janko/vim-test'
-  Plugin 'kassio/neoterm'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'Xuyuanp/nerdtree-git-plugin'
-  Plugin 'terryma/vim-multiple-cursors'
-  Plugin 'tpope/vim-projectionist'
-  Plugin 'tpope/vim-fugitive'
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
-  Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plugin 'junegunn/fzf.vim'
+" Make sure you use single quotes
+  " let Vundle manage Vundle, required
+  Plug 'airblade/vim-gitgutter'
+  Plug 'scrooloose/syntastic'
+  Plug 'scrooloose/nerdtree'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'bling/vim-airline'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-bundler'
+  Plug 'thoughtbot/vim-rspec'
+  Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-surround'
+  Plug 'ervandew/supertab'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'othree/yajs.vim'
+  Plug 'tpope/vim-eunuch'
+  Plug 'gcmt/wildfire.vim'
+  Plug 'janko/vim-test'
+  Plug 'kassio/neoterm'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'tpope/vim-projectionist'
+  Plug 'tpope/vim-fugitive'
+  Plug 'github/copilot.vim'
+
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
 
 
   " Colorschemes
-  Plugin 'mhartington/oceanic-next'
-call vundle#end()            " required
+  Plug 'mhartington/oceanic-next'
+call plug#end()
 filetype plugin on
 
 " load lua functions for navigation
@@ -206,7 +213,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 let g:SuperTabLongestHighlight = 1
 
 " Disable JS - Vim Polyglot Plugin
-let g:polyglot_disabled = ['javascript']
+"let g:polyglot_disabled = ['javascript']
 
 " resize splits when vim is resized
 autocmd VimResized * wincmd =
