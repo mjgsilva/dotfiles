@@ -35,7 +35,6 @@ call plug#begin()
   Plug 'terryma/vim-multiple-cursors'
   Plug 'tpope/vim-projectionist'
   Plug 'tpope/vim-fugitive'
-  Plug 'github/copilot.vim'
 
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -62,10 +61,10 @@ nnoremap <Leader>nr :NERDTreeRefreshRoot<CR> "Refresh root
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>a :Ag<Space>
+nnoremap <Leader>a :Rg<Space>
 nnoremap <Leader>t :tabe<CR>
 nnoremap <Leader>h :nohlsearch<CR>
-nnoremap F :Ag <C-R><C-W><CR>
+nnoremap F :Rg <C-R><C-W><CR>
 
 " vim-test
 let test#strategy = "neoterm"

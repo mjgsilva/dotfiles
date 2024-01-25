@@ -5,7 +5,7 @@ export ZSH=/Users/mario/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="smtMJ"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,8 +49,7 @@ ZSH_THEME="smtMJ"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
-# plugins=(ssh-agent)
+plugins=(git)
 
 # User configuration
 
@@ -63,12 +62,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
 
-# Tmuxinator
-function mux() { tmuxinator "$@" }
 # NeoVim alias
 alias v='env LANG=en_GB.UTF-8 nvim'
-# Npm installer w/o progress bar
-alias npmi='npm set progress=false && npm install'
 # Postgres
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -85,10 +80,11 @@ alias gsa='git stash apply'
 alias grm='git rebase master -i'
 alias grc='git rebase --continue'
 alias gca='git commit --amend'
-alias gcm='git checkout master'
+alias gcm="git checkout $(git_main_branch)"
 function gsut() { git branch --set-upstream-to=origin/"$@" "$@" }
 function gcmm() { git commit -m "$@" }
 function gcb() { git checkout -b "$@" }
+unalias gc
 function gc() { git checkout "$@" }
 compdef _git gc=git-checkout
 function gbd() { git branch -D "$@" }
@@ -102,38 +98,25 @@ compdef _git nuke=git-branch
 
 function rbs() {
   local my_branch="$(git rev-parse --abbrev-ref HEAD)"
-  git checkout master
+  git checkout $(git_main_branch)
   git pull
-  git checkout ${my_branch}
-  git rebase master -i
+  git checkout $my_branch
+  git rebase $(git_main_branch) -i
 }
-
-function dorig() { find . -name '*.orig' -delete }
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.DS_Store}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# Tmuxinator
+function mux() { tmuxinator "$@" }
 alias to='mux "$(ls -t ~/Documents/Github/UT | fzf --layout=reverse)"'
 alias ta='tmux attach -t "$(tmux ls -F "#S" | fzf --layout=reverse)"'
 alias ts='tmux ls'
 function tat() { tmux attach-session -t "$@" }
-alias hh='echo "$(history | cut -c 8- | sort -rn | fzf --layout=reverse)"'
-function mixx() {
-  if [ "$1" = "" ]; then
-    source ./.env.dev && iex -S mix
-  else
-    source ./.env.dev && PORT="$1" iex -S mix
-  fi
-}
 
 export GPG_TTY=$(tty)
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
