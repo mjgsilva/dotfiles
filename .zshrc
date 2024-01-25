@@ -50,54 +50,21 @@ ZSH_THEME="smtMJ"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
-plugins=(ssh-agent)
+# plugins=(ssh-agent)
 
 # User configuration
 
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export NVM_DIR="/Users/mario/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-function ignoreio() { curl -L -s https://www.gitignore.io/api/$@ ;}
-#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 export EDITOR='nvim'
 
 # Tmuxinator
 function mux() { tmuxinator "$@" }
-# Docker
-alias '_dcu=docker-compose up'
-alias '_dcd=docker-compose down'
-alias '_dss=docker-sync-stack start'
-alias '_dsc=docker-sync clean'
 # NeoVim alias
 alias v='env LANG=en_GB.UTF-8 nvim'
 # Npm installer w/o progress bar
@@ -143,7 +110,8 @@ function rbs() {
 
 function dorig() { find . -name '*.orig' -delete }
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore "*.png" --ignore "*.jpg" -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.DS_Store}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 alias to='mux "$(ls -t ~/Documents/Github/UT | fzf --layout=reverse)"'
 alias ta='tmux attach -t "$(tmux ls -F "#S" | fzf --layout=reverse)"'
@@ -158,20 +126,14 @@ function mixx() {
   fi
 }
 
-alias ypretty='yarn prettier --write "src/**/*.{js,jsx}"'
-
 export GPG_TTY=$(tty)
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH=$HOME/.utrust-cli/bin:$PATH
 
-. /usr/local/opt/asdf/asdf.sh
-
+. /usr/local/opt/asdf/libexec/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 
-eval "$(direnv hook zsh)"
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
 
-export PATH="$(yarn global bin):$PATH"
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

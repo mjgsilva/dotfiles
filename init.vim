@@ -1,11 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-"
-"
 " Package Management
-"
-"
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
