@@ -4,7 +4,7 @@ local env = vim.env
 -- FZF
 g.fzf_buffers_jump = 1
 env.FZF_DEFAULT_OPTS = '--layout=reverse --bind ctrl-d:page-down,ctrl-u:page-up'
-env.FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.DS_Store,deps,_build}/*" 2> /dev/null'
+env.FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.DS_Store,deps,_build,.elixir_ls}/*" 2> /dev/null'
 
 -- Vim-test
 g['test#strategy'] = 'neoterm'
@@ -14,9 +14,6 @@ g.neoterm_default_mod = 'vertical'
 g.neoterm_automap_keys = 'tt'
 g.neoterm_fixedsize = 1
 g.neoterm_autoscroll = 1
-
--- Nerdcommenter
-g.NERDCreateDefaultMappings = 0
 
 -- Projectionist
 g.projectionist_heuristics = {

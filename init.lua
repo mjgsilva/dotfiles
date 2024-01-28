@@ -1,6 +1,6 @@
 require 'settings'
 require 'keymaps'
-require 'plugins-settings'
+require 'plugins-gsettings'
 
 -- Settings & Keys
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

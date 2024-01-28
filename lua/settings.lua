@@ -40,7 +40,6 @@ opt.incsearch = true
 opt.ignorecase = true
 opt.hlsearch = true
 
-opt.ignorecase = true
 opt.smartcase = true
 opt.list = true
 opt.listchars = 'tab:>.,trail:.,extends:#,nbsp:.'
@@ -58,7 +57,7 @@ g.SuperTabLongestHighlight = 1
 
 -- Window
 local wr_group = vim.api.nvim_create_augroup('WinResize', { clear = true })
-vim.api.nvim_create_autocmd(
+api.nvim_create_autocmd(
     'VimResized',
     {
         group = wr_group,
