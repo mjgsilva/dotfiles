@@ -109,7 +109,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Tmuxinator
 function mux() { tmuxinator "$@" }
-alias to='mux "$(ls -t ~/Documents/Github/UT | fzf --layout=reverse)"'
+alias to='mux "$(ls -t ~/Documents/Projects | fzf --layout=reverse)"'
 alias ta='tmux attach -t "$(tmux ls -F "#S" | fzf --layout=reverse)"'
 alias ts='tmux ls'
 function tat() { tmux attach-session -t "$@" }
