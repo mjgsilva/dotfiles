@@ -26,9 +26,9 @@ return {
 
           local capabilities = cmp_nvim_lsp.default_capabilities()
           local on_attach = function(_client, bufnr)
-             api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', ns)
+             api.nvim_buf_set_keymap(bufnr, 'n', 'gF', '<cmd>lua vim.lsp.buf.definition()<CR>', ns)
              api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', ns)
-             api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns)
+             api.nvim_buf_set_keymap(bufnr, 'n', 'gC', '<cmd>lua vim.lsp.buf.declaration()<CR>', ns)
              api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', ns)
              api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', ns)
              api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', ns)
