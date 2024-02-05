@@ -47,17 +47,17 @@ set('n', '<Leader>ss', ':TestSuite<CR>', ns)
 set('n', '<Leader>ll', ':TestLast<CR>', ns)
 
 -- Neoterm
-set('t', '<C-e>', '<C-><C-n>', ns)
-set('n', '<silent>', '<leader>m1 :Ttoggle<cr>', ns)
-set('n', '<silent>', '<leader>m2 :Tclear<cr>', ns)
-set('n', '<silent>', '<leader>m3 :Tkill<cr>', ns)
+set('t', '<C-e>', '<C-\\><C-n>', ns)
+set('n', '<leader>m1', ':Ttoggle<cr>', s)
+set('n', '<leader>m2', ':Tclear<cr>', s)
+set('n', '<leader>m3', ':Tkill<cr>', s)
 
 -- Nerdcommenter
 set('n', '<Leader>cc', "<Plug>NERDCommenterToggle('n', 'Toggle')<Cr>", s)
 
 -- Projectionist
-set('n', '<silent>', '<leader>u1 :A<cr>', ns)
-set('n', '<silent>', '<leader>u2 :AV<cr>', ns)
+set('n', '<leader>u1', ':A<cr>', s)
+set('n', '<leader>u2', ':AV<cr>', s)
 
 -- Fujitive
-set('n', '<silent>', '<leader>gh :silent execute "!tmux new-window tig " . expand("%:p")<CR>', ns)
+set('n', '<leader>gh', ':silent execute "!tmux new-window tig " . expand("%:p")<CR>', s)
