@@ -16,7 +16,6 @@ return {
   'gcmt/wildfire.vim',
   'janko/vim-test',
   'kassio/neoterm',
-  'scrooloose/nerdcommenter',
   'Xuyuanp/nerdtree-git-plugin',
   'terryma/vim-multiple-cursors',
   'tpope/vim-projectionist',

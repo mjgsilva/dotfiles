@@ -52,9 +52,6 @@ set('n', '<leader>m1', ':Ttoggle<cr>', s)
 set('n', '<leader>m2', ':Tclear<cr>', s)
 set('n', '<leader>m3', ':Tkill<cr>', s)
 
--- Nerdcommenter
-set('n', '<Leader>cc', "<Plug>NERDCommenterToggle('n', 'Toggle')<Cr>", s)
-
 -- Projectionist
 set('n', '<leader>u1', ':A<cr>', s)
 set('n', '<leader>u2', ':AV<cr>', s)
