@@ -33,7 +33,7 @@ g['airline#extensions#tabline#enabled'] = 1
 
 -- Nerdtree
 g.NERDTreeShowHidden = 1
-g.NERDTreeIgnore = {".DS_Store$"}
+g.NERDTreeIgnore = {'.DS_Store$'}
 
 -- Multicursors
 g.multi_cursor_use_default_mapping = 0
