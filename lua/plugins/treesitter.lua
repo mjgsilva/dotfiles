@@ -7,7 +7,8 @@ return {
         ensure_installed = {
           'elixir',
           'heex',
-          'eex'
+          'eex',
+          'ruby'
         },
         highlight = { enable = true }
       })

@@ -46,6 +46,15 @@ return {
             on_attach = on_attach,
             capabilities = capabilities
           })
+
+          lspconfig['solargraph'].setup({
+            cmd = { 'solargraph', 'stdio' },
+            filetypes = { 'ruby' },
+            root_dir = lspconfig.util.root_pattern({ 'Gemfile', '.git', '.' }),
+            init_options = { formatting = true },
+            on_attach = on_attach,
+            capabilities = capabilities
+          })
         end
       }
     }
