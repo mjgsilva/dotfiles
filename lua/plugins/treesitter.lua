@@ -8,8 +8,10 @@ return {
           'elixir',
           'heex',
           'eex',
-          'ruby'
+          'surface',
+          'json'
         },
+        auto_install = true,
         highlight = { enable = true }
       })
   end

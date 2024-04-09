@@ -1,8 +1,6 @@
 return {
   'airblade/vim-gitgutter',
-  'scrooloose/syntastic',
   'scrooloose/nerdtree',
-  'sheerun/vim-polyglot',
   'bling/vim-airline',
   'tpope/vim-rails',
   'tpope/vim-bundler',
