@@ -116,7 +116,7 @@ function tat() { tmux attach-session -t "$@" }
 
 export GPG_TTY=$(tty)
 
-. /usr/local/opt/asdf/libexec/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+. $(brew --prefix asdf)/libexec/asdf.sh
+. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
