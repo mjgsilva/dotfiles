@@ -37,11 +37,11 @@ set('i', '<c-x><c-f>', '<plug>(fzf-complete-path)', s)
 
 -- Nerdtree
 set('n', '<C-n>', ':NERDTreeToggle<CR>', s)
-set('n', '<Leader>n', ':NERDTreeFind<CR>', s)
+set('n', '<Leader>nn', ':NERDTreeFind<CR>', s)
 set('n', '<Leader>nr', ':NERDTreeRefreshRoot<CR>', ns)
 
 -- Vim-test
-set('n', '<Leader>nn', ':TestNearest<CR>', ns)
+set('n', '<Leader>nt', ':TestNearest<CR>', ns)
 set('n', '<Leader>ff', ':TestFile<CR>', ns)
 set('n', '<Leader>ss', ':TestSuite<CR>', ns)
 set('n', '<Leader>ll', ':TestLast<CR>', ns)
