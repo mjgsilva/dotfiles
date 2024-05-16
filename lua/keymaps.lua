@@ -29,7 +29,7 @@ set('n', '<left>', '<nop>', s)
 
 -- Search
 set('n', '<c-p>', ':FZF<CR>', s)
-set('n', 'F :Rg', '<C-R><C-W><CR>', ns)
+set('n', 'F', ':Rg <C-R><C-W><CR>', ns)
 set('n', '<Leader>a', ':Rg<Space>', n)
 
 -- FZF
